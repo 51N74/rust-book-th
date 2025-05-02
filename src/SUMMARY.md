@@ -1,8 +1,8 @@
 # The Rust Programming Language
 
 [The Rust Programming Language](title-page.md)
-[Foreword](foreword.md)
-[Introduction](ch00-00-introduction.md)
+[คำนำ](foreword.md)
+[บทนำ](ch00-00-introduction.md)
 
 ## Getting started
 
