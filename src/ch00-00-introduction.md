@@ -28,140 +28,59 @@ Rust กำลังพิสูจน์ตัวเองว่าเป็น
 
 ด้วยเครื่องมือเหล่านี้และอีกมากมายในระบบนิเวศของ Rust  นักพัฒนาจึงสามารถเขียนโค้ดระดับระบบได้อย่างมีประสิทธิภาพ โดยไม่ต้องแลกกับประสบการณ์การทำงานที่ดี
 
-### Students
+### นักเรียน/นักศึกษา
 
-Rust is for students and those who are interested in learning about systems
-concepts. Using Rust, many people have learned about topics like operating
-systems development. The community is very welcoming and happy to answer
-student questions. Through efforts such as this book, the Rust teams want to
-make systems concepts more accessible to more people, especially those new to
-programming.
+Rust เหมาะสำหรับนักเรียนนักศึกษาและผู้ที่สนใจเรียนรู้เกี่ยวกับแนวคิดเชิงระบบ หลายคนได้เรียนรู้หัวข้อต่างๆ เช่น การพัฒนาระบบปฏิบัติการผ่านการใช้ Rust ชุมชน Rust เปิดกว้างและยินดีตอบคำถามของนักเรียนนักศึกษาเป็นอย่างยิ่ง ด้วยความพยายามต่างๆ เช่น หนังสือเล่มนี้ ทีมงาน Rust ต้องการทำให้แนวคิดเชิงระบบเข้าถึงผู้คนได้มากขึ้น โดยเฉพาะผู้ที่เพิ่งเริ่มต้นเขียนโปรแกรม
 
-### Companies
+### บริษัทต่างๆ
 
-Hundreds of companies, large and small, use Rust in production for a variety of
-tasks, including command line tools, web services, DevOps tooling, embedded
-devices, audio and video analysis and transcoding, cryptocurrencies,
-bioinformatics, search engines, Internet of Things applications, machine
-learning, and even major parts of the Firefox web browser.
+บริษัทใหญ่น้อยหลายร้อยแห่งนำ Rust ไปใช้จริงในการผลิตสำหรับงานที่หลากหลาย รวมถึงเครื่องมือบรรทัดคำสั่ง, บริการเว็บ, เครื่องมือ DevOps, อุปกรณ์ฝังตัว, การวิเคราะห์และแปลงรหัสสัญญาณเสียงและวิดีโอ, สกุลเงินดิจิทัล, ชีวสารสนเทศ, เครื่องมือค้นหา, แอปพลิเคชัน Internet of Things, การเรียนรู้ของเครื่อง และแม้แต่ส่วนสำคัญของเว็บเบราว์เซอร์ Firefox
 
-### Open Source Developers
+### นักพัฒนาโอเพนซอร์ส
 
-Rust is for people who want to build the Rust programming language, community,
-developer tools, and libraries. We’d love to have you contribute to the Rust
-language.
+Rust เหมาะสำหรับผู้ที่ต้องการสร้างภาษาโปรแกรม Rust, ชุมชน, เครื่องมือสำหรับนักพัฒนา และไลบรารี พวกเรายินดีเป็นอย่างยิ่งหากคุณจะร่วมมีส่วนร่วมในการพัฒนาภาษา Rust
 
-### People Who Value Speed and Stability
+### ผู้ที่ให้ความสำคัญกับความเร็วและความเสถียร
 
-Rust is for people who crave speed and stability in a language. By speed, we
-mean both how quickly Rust code can run and the speed at which Rust lets you
-write programs. The Rust compiler’s checks ensure stability through feature
-additions and refactoring. This is in contrast to the brittle legacy code in
-languages without these checks, which developers are often afraid to modify. By
-striving for zero-cost abstractions—higher-level features that compile to
-lower-level code as fast as code written manually—Rust endeavors to make safe
-code be fast code as well.
+Rust เหมาะสำหรับผู้ที่ปรารถนาความเร็วและความเสถียรในภาษาโปรแกรม ความเร็วในที่นี้หมายถึงทั้งความรวดเร็วในการรันโค้ด Rust และความเร็วที่ Rust ช่วยให้คุณเขียนโปรแกรมได้ การตรวจสอบของคอมไพเลอร์ Rust ช่วยให้มั่นใจถึงเสถียรภาพผ่านการเพิ่มคุณสมบัติใหม่และการปรับโครงสร้างโค้ด ซึ่งแตกต่างจากโค้ดเก่าที่เปราะบางในภาษาที่ไม่มีการตรวจสอบเหล่านี้ ซึ่งนักพัฒนามักจะหวาดกลัวที่จะแก้ไข ด้วยความมุ่งมั่นที่จะสร้างนามธรรมที่ไม่เสียค่าใช้จ่าย (zero-cost abstractions) ซึ่งเป็นคุณสมบัติระดับสูงที่คอมไพล์เป็นโค้ดระดับต่ำได้อย่างรวดเร็วเทียบเท่ากับการเขียนโค้ดด้วยตนเอง Rust มุ่งมั่นที่จะทำให้โค้ดที่ปลอดภัยเป็นโค้ดที่รวดเร็วด้วยเช่นกัน
 
-The Rust language hopes to support many other users as well; those mentioned
-here are merely some of the biggest stakeholders. Overall, Rust’s greatest
-ambition is to eliminate the trade-offs that programmers have accepted for
-decades by providing safety _and_ productivity, speed _and_ ergonomics. Give
-Rust a try and see if its choices work for you.
+ภาษา Rust หวังที่จะสนับสนุนผู้ใช้อื่นๆ อีกมากมายเช่นกัน ผู้ที่กล่าวถึงมานี้เป็นเพียงผู้มีส่วนได้ส่วนเสียรายใหญ่บางส่วนเท่านั้น โดยรวมแล้ว ความปรารถนาสูงสุดของ Rust คือการขจัดข้อแลกเปลี่ยนที่โปรแกรมเมอร์ยอมรับมานานหลายทศวรรษ โดยมอบทั้งความปลอดภัย และ ผลผลิต, ความเร็ว และ ความสะดวกในการใช้งาน ลองใช้ Rust ดู แล้วคุณจะรู้ว่าตัวเลือกของมันเหมาะกับคุณหรือไม่
 
-## Who This Book Is For
+## หนังสือเล่มนี้เหมาะสำหรับใคร
 
-This book assumes that you’ve written code in another programming language but
-doesn’t make any assumptions about which one. We’ve tried to make the material
-broadly accessible to those from a wide variety of programming backgrounds. We
-don’t spend a lot of time talking about what programming _is_ or how to think
-about it. If you’re entirely new to programming, you would be better served by
-reading a book that specifically provides an introduction to programming.
+หนังสือเล่มนี้ตั้งสมมติฐานว่าคุณเคยเขียนโค้ดด้วยภาษาโปรแกรมอื่นมาแล้ว แต่ไม่ได้เจาะจงว่าเป็นภาษาใด เราพยายามทำให้เนื้อหาสามารถเข้าถึงได้ในวงกว้างสำหรับผู้ที่มีพื้นฐานการเขียนโปรแกรมที่หลากหลาย เราไม่ได้ใช้เวลามากนักในการพูดถึงว่าการเขียนโปรแกรม คืออะไร หรือวิธีการคิดเกี่ยวกับการเขียนโปรแกรม หากคุณยังใหม่กับการเขียนโปรแกรมโดยสิ้นเชิง คุณอาจจะได้รับประโยชน์มากกว่าจากการอ่านหนังสือที่แนะนำการเขียนโปรแกรมโดยเฉพาะ
 
-## How to Use This Book
+## วิธีการใช้งานหนังสือเล่มนี้
 
-In general, this book assumes that you’re reading it in sequence from front to
-back. Later chapters build on concepts in earlier chapters, and earlier
-chapters might not delve into details on a particular topic but will revisit
-the topic in a later chapter.
+โดยทั่วไปแล้ว หนังสือเล่มนี้ตั้งใจให้คุณอ่านตามลำดับตั้งแต่หน้าแรกไปจนถึงหน้าสุดท้าย บทต่อๆ ไปจะสร้างขึ้นจากแนวคิดในบทก่อนหน้า และบทก่อนหน้าอาจจะยังไม่ลงรายละเอียดในหัวข้อใดหัวข้อหนึ่ง แต่จะกลับมากล่าวถึงหัวข้อนั้นอีกครั้งในบทต่อๆ ไป
 
-You’ll find two kinds of chapters in this book: concept chapters and project
-chapters. In concept chapters, you’ll learn about an aspect of Rust. In project
-chapters, we’ll build small programs together, applying what you’ve learned so
-far. Chapters 2, 12, and 21 are project chapters; the rest are concept chapters.
+คุณจะพบกับบทเรียนสองประเภทในหนังสือเล่มนี้: บทเรียนแนวคิด และบทเรียนโครงงาน ในบทเรียนแนวคิด คุณจะได้เรียนรู้เกี่ยวกับแง่มุมต่างๆ ของ Rust ในบทเรียนโครงงาน เราจะสร้างโปรแกรมขนาดเล็กไปพร้อมๆ กัน โดยนำสิ่งที่คุณได้เรียนรู้มาประยุกต์ใช้ บทที่ 2, 12 และ 21 เป็นบทเรียนโครงงาน ส่วนบทอื่นๆ เป็นบทเรียนแนวคิด
 
-Chapter 1 explains how to install Rust, how to write a “Hello, world!” program,
-and how to use Cargo, Rust’s package manager and build tool. Chapter 2 is a
-hands-on introduction to writing a program in Rust, having you build up a
-number guessing game. Here we cover concepts at a high level, and later
-chapters will provide additional detail. If you want to get your hands dirty
-right away, Chapter 2 is the place for that. Chapter 3 covers Rust features
-that are similar to those of other programming languages, and in Chapter 4
-you’ll learn about Rust’s ownership system. If you’re a particularly meticulous
-learner who prefers to learn every detail before moving on to the next, you
-might want to skip Chapter 2 and go straight to Chapter 3, returning to Chapter
-2 when you’d like to work on a project applying the details you’ve learned.
+บทที่ 1 อธิบายวิธีการติดตั้ง Rust, วิธีการเขียนโปรแกรม "Hello, world!", และวิธีการใช้งาน Cargo ซึ่งเป็นเครื่องมือจัดการแพ็กเกจและเครื่องมือสร้างของ Rust บทที่ 2 เป็นบทนำเชิงปฏิบัติในการเขียนโปรแกรมใน Rust โดยจะให้คุณสร้างเกมทายตัวเลข ในบทนี้เราจะกล่าวถึงแนวคิดในภาพรวม และบทต่อๆ ไปจะให้รายละเอียดเพิ่มเติม หากคุณต้องการลงมือปฏิบัติจริงทันที บทที่ 2 คือที่สำหรับคุณ บทที่ 3 ครอบคลุมคุณสมบัติของ Rust ที่คล้ายคลึงกับภาษาโปรแกรมอื่นๆ และในบทที่ 4 คุณจะได้เรียนรู้เกี่ยวกับระบบความเป็นเจ้าของ (ownership system) ของ Rust หากคุณเป็นผู้เรียนที่พิถีพิถันเป็นพิเศษและต้องการเรียนรู้ทุกรายละเอียดก่อนที่จะไปยังหัวข้อถัดไป คุณอาจต้องการข้ามบทที่ 2 ไปยังบทที่ 3 โดยตรง และกลับมาที่บทที่ 2 เมื่อคุณต้องการทำงานในโครงงานเพื่อนำรายละเอียดที่คุณได้เรียนรู้ไปประยุกต์ใช้
 
-Chapter 5 discusses structs and methods, and Chapter 6 covers enums, `match`
-expressions, and the `if let` control flow construct. You’ll use structs and
-enums to make custom types in Rust.
+บทที่ 5 กล่าวถึงโครงสร้าง (structs) และเมธอด (methods) และบทที่ 6 ครอบคลุมการแจงนับ (enums), นิพจน์ match, และโครงสร้างควบคุมการไหล if let คุณจะได้ใช้โครงสร้างและการแจงนับเพื่อสร้างชนิดข้อมูลที่คุณกำหนดเองใน Rust
 
-In Chapter 7, you’ll learn about Rust’s module system and about privacy rules
-for organizing your code and its public Application Programming Interface
-(API). Chapter 8 discusses some common collection data structures that the
-standard library provides, such as vectors, strings, and hash maps. Chapter 9
-explores Rust’s error-handling philosophy and techniques.
+ในบทที่ 7 คุณจะได้เรียนรู้เกี่ยวกับระบบโมดูลของ Rust และกฎความเป็นส่วนตัวสำหรับการจัดระเบียบโค้ดและ Application Programming Interface (API) สาธารณะของโค้ดนั้น บทที่ 8 กล่าวถึงโครงสร้างข้อมูลคอลเล็กชันทั่วไปบางส่วนที่ไลบรารีมาตรฐานมีให้ เช่น เวกเตอร์, สตริง และแฮชแมป บทที่ 9 สำรวจปรัชญาและเทคนิคการจัดการข้อผิดพลาดของ Rust
 
-Chapter 10 digs into generics, traits, and lifetimes, which give you the power
-to define code that applies to multiple types. Chapter 11 is all about testing,
-which even with Rust’s safety guarantees is necessary to ensure your program’s
-logic is correct. In Chapter 12, we’ll build our own implementation of a subset
-of functionality from the `grep` command line tool that searches for text
-within files. For this, we’ll use many of the concepts we discussed in the
-previous chapters.
+บทที่ 10 เจาะลึกเรื่อง Generics, Traits และ Lifetimes ซึ่งมอบพลังให้คุณกำหนดโค้ดที่สามารถใช้งานได้กับหลายชนิดข้อมูล บทที่ 11 กล่าวถึงการทดสอบ ซึ่งแม้ว่า Rust จะมีการรับประกันความปลอดภัยแล้วก็ตาม การทดสอบก็ยังจำเป็นเพื่อให้แน่ใจว่าตรรกะของโปรแกรมคุณถูกต้อง ในบทที่ 12 เราจะสร้างการใช้งานฟังก์ชันการทำงานที่เป็นส่วนหนึ่งของเครื่องมือบรรทัดคำสั่ง grep ซึ่งใช้สำหรับค้นหาข้อความภายในไฟล์ สำหรับบทนี้ เราจะใช้แนวคิดหลายอย่างที่เราได้กล่าวถึงในบทก่อนหน้า
 
-Chapter 13 explores closures and iterators: features of Rust that come from
-functional programming languages. In Chapter 14, we’ll examine Cargo in more
-depth and talk about best practices for sharing your libraries with others.
-Chapter 15 discusses smart pointers that the standard library provides and the
-traits that enable their functionality.
+บทที่ 13 สำรวจ Closures และ Iterators ซึ่งเป็นคุณสมบัติของ Rust ที่มาจากภาษาโปรแกรมเชิงฟังก์ชัน ในบทที่ 14 เราจะพิจารณา Cargo ในรายละเอียดมากขึ้น และพูดถึงแนวทางปฏิบัติที่ดีที่สุดสำหรับการแบ่งปันไลบรารีของคุณกับผู้อื่น บทที่ 15 กล่าวถึง Smart Pointers ที่ไลบรารีมาตรฐานมีให้ และ Traits ที่ทำให้ฟังก์ชันการทำงานของ Smart Pointers เป็นไปได้
 
-In Chapter 16, we’ll walk through different models of concurrent programming and
-talk about how Rust helps you to program in multiple threads fearlessly. In
-Chapter 17, we build on that by exploring Rust’s async and await syntax, along
-with tasks, futures, and streams, and the lightweight concurrency model they
-enable.
+ในบทที่ 16 เราจะพิจารณารูปแบบต่างๆ ของการเขียนโปรแกรมแบบขนาน และพูดคุยถึงวิธีที่ Rust ช่วยให้คุณเขียนโปรแกรมที่มีหลายเธรดได้อย่างไร้กังวล ในบทที่ 17 เราจะต่อยอดจากนั้นโดยการสำรวจไวยากรณ์ async และ await ของ Rust และรูปแบบการทำงานพร้อมกันแบบ Lightweight ที่ไวยากรณ์เหล่านี้สนับสนุน
 
-Chapter 18 looks at how Rust idioms compare to object-oriented programming
-principles you might be familiar with. Chapter 19 is a reference on patterns and
-pattern matching, which are powerful ways of expressing ideas throughout Rust
-programs. Chapter 20 contains a smorgasbord of advanced topics of interest,
-including unsafe Rust, macros, and more about lifetimes, traits, types,
-functions, and closures.
+บทที่ 18 จะพิจารณาว่าสำนวนภาษา Rust เปรียบเทียบกับหลักการเขียนโปรแกรมเชิงวัตถุที่คุณอาจคุ้นเคยได้อย่างไร
 
-In Chapter 21, we’ll complete a project in which we’ll implement a low-level
-multithreaded web server!
+บทที่ 19 เป็นบทอ้างอิงเกี่ยวกับ Patterns และ Pattern Matching ซึ่งเป็นวิธีที่มีประสิทธิภาพในการแสดงแนวคิดต่างๆ ทั่วทั้งโปรแกรม Rust บทที่ 20 รวบรวมหัวข้อขั้นสูงที่น่าสนใจมากมาย รวมถึง Unsafe Rust, Macros และรายละเอียดเพิ่มเติมเกี่ยวกับ Lifetimes, Traits, Types, Functions และ Closures
 
-Finally, some appendixes contain useful information about the language in a more
-reference-like format. **Appendix A** covers Rust’s keywords, **Appendix B**
-covers Rust’s operators and symbols, **Appendix C** covers derivable traits
-provided by the standard library, **Appendix D** covers some useful development
-tools, and **Appendix E** explains Rust editions. In **Appendix F**, you can
-find translations of the book, and in **Appendix G** we’ll cover how Rust is
-made and what nightly Rust is.
+ในบทที่ 21 เราจะทำโครงงานให้เสร็จสิ้น โดยเราจะสร้างเว็บเซิร์ฟเวอร์แบบ Multithreaded ระดับล่าง!
 
-There is no wrong way to read this book: if you want to skip ahead, go for it!
-You might have to jump back to earlier chapters if you experience any
-confusion. But do whatever works for you.
+สุดท้ายนี้ ภาคผนวกบางส่วนมีข้อมูลที่เป็นประโยชน์เกี่ยวกับภาษาในรูปแบบที่อ้างอิงได้มากขึ้น ภาคผนวก A ครอบคลุมคำหลัก (keywords) ของ Rust, ภาคผนวก B ครอบคลุมตัวดำเนินการ (operators) และสัญลักษณ์ (symbols) ของ Rust, ภาคผนวก C ครอบคลุม Traits ที่สามารถ Derive ได้ซึ่งมีอยู่ในไลบรารีมาตรฐาน, ภาคผนวก D ครอบคลุมเครื่องมือพัฒนาที่เป็นประโยชน์บางส่วน และภาคผนวก E อธิบายเกี่ยวกับ Rust Editions ในภาคผนวก F คุณสามารถค้นหาคำแปลของหนังสือเล่มนี้ได้ และในภาคผนวก G เราจะกล่าวถึงวิธีการสร้าง Rust และ Nightly Rust คืออะไร
+
+ไม่มีวิธีที่ผิดในการอ่านหนังสือเล่มนี้: หากคุณต้องการข้ามไปข้างหน้า ก็ทำได้เลย! คุณอาจจะต้องย้อนกลับไปอ่านบทก่อนหน้าหากเกิดความสับสน แต่ขอให้ทำในวิธีที่เหมาะกับคุณที่สุดครับ
 
 <span id="ferris"></span>
 
-An important part of the process of learning Rust is learning how to read the
-error messages the compiler displays: these will guide you toward working code.
-As such, we’ll provide many examples that don’t compile along with the error
-message the compiler will show you in each situation. Know that if you enter
-and run a random example, it may not compile! Make sure you read the
-surrounding text to see whether the example you’re trying to run is meant to
-error. Ferris will also help you distinguish code that isn’t meant to work:
+ส่วนสำคัญของกระบวนการเรียนรู้ Rust คือการเรียนรู้วิธีอ่านข้อความแสดงข้อผิดพลาดที่คอมไพเลอร์แสดง: สิ่งเหล่านี้จะนำทางคุณไปสู่โค้ดที่ทำงานได้ ดังนั้น เราจะยกตัวอย่างมากมายที่ไม่สามารถคอมไพล์ได้ พร้อมกับข้อความแสดงข้อผิดพลาดที่คอมไพเลอร์จะแสดงให้คุณเห็นในแต่ละสถานการณ์ โปรดทราบว่าหากคุณป้อนและรันตัวอย่างแบบสุ่ม ตัวอย่างนั้นอาจจะไม่สามารถคอมไพล์ได้! โปรดอ่านข้อความโดยรอบเพื่อให้แน่ใจว่าตัวอย่างที่คุณกำลังพยายามรันนั้นตั้งใจให้เกิดข้อผิดพลาดหรือไม่ Ferris จะช่วยคุณแยกแยะโค้ดที่ไม่ได้ตั้งใจให้ทำงานได้ด้วย:
 
 | Ferris                                                                                                           | Meaning                                          |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
@@ -169,12 +88,11 @@ error. Ferris will also help you distinguish code that isn’t meant to work:
 | <img src="img/ferris/panics.svg" class="ferris-explain" alt="Ferris throwing up their hands"/>                   | This code panics!                                |
 | <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain" alt="Ferris with one claw up, shrugging"/> | This code does not produce the desired behavior. |
 
-In most situations, we’ll lead you to the correct version of any code that
-doesn’t compile.
+ในสถานการณ์ส่วนใหญ่ เราจะนำคุณไปยังโค้ดเวอร์ชันที่ถูกต้องของโค้ดที่ไม่สามารถคอมไพล์ได้
 
 ## Source Code
 
-The source files from which this book is generated can be found on
+ไฟล์ต้นฉบับที่ใช้สร้างหนังสือเล่มนี้สามารถหาอ่านได้บน
 [GitHub][book].
 
 [book]: https://github.com/rust-lang/book/tree/main/src
