@@ -1,48 +1,32 @@
-# Introduction
+# บทนำ
 
-> Note: This edition of the book is the same as [The Rust Programming
-> Language][nsprust] available in print and ebook format from [No Starch
+> หมายเหตุ: หนังสือฉบับนี้มีเนื้อหาเดียวกันกับฉบับพิมพ์และอีบุ๊ก [The Rust Programming
+> Language][nsprust] ที่จัดจำหน่ายโดย [No Starch
 > Press][nsp].
 
 [nsprust]: https://nostarch.com/rust-programming-language-2nd-edition
 [nsp]: https://nostarch.com/
 
-Welcome to _The Rust Programming Language_, an introductory book about Rust.
-The Rust programming language helps you write faster, more reliable software.
-High-level ergonomics and low-level control are often at odds in programming
-language design; Rust challenges that conflict. Through balancing powerful
-technical capacity and a great developer experience, Rust gives you the option
-to control low-level details (such as memory usage) without all the hassle
-traditionally associated with such control.
+ขอต้อนรับสู่ _The Rust Programming Language_, หนังสือปูพื้นฐานสำหรับการเขียนโปรแกรมด้วยภาษา Rust
+Rust เป็นภาษาโปรแกรมที่ช่วยให้คุณเขียนซอฟต์แวร์ได้รวดเร็วและเชื่อถือได้มากขึ้น โดยทั่วไปแล้ว การออกแบบภาษาที่ใช้งานง่ายในระดับสูง (high-level ergonomics) กับการควบคุมรายละเอียดในระดับต่ำ (low-level control) มักจะขัดแย้งกัน แต่ Rust ท้าทายแนวคิดนั้น Rust ให้คุณได้ทั้งพลังในการจัดการเชิงเทคนิคอย่างลึกซึ้ง และประสบการณ์การพัฒนาที่ดีในเวลาเดียวกัน คุณจึงสามารถควบคุมสิ่งต่างๆ อย่างหน่วยความจำได้อย่างละเอียด โดยไม่ต้องเผชิญกับความยุ่งยากเหมือนภาษาระดับต่ำแบบดั้งเดิม
 
-## Who Rust Is For
+## Rust เหมาะกับใคร
 
-Rust is ideal for many people for a variety of reasons. Let’s look at a few of
-the most important groups.
+Rust เป็นภาษาที่เหมาะกับคนหลากหลายกลุ่ม ด้วยเหตุผลที่แตกต่างกัน ลองมาดูกันว่ามีกลุ่มไหนที่ได้รับประโยชน์มากที่สุดบ้าง
 
-### Teams of Developers
+### ทีมพัฒนาซอฟต์แวร์
 
-Rust is proving to be a productive tool for collaborating among large teams of
-developers with varying levels of systems programming knowledge. Low-level code
-is prone to various subtle bugs, which in most other languages can be caught
-only through extensive testing and careful code review by experienced
-developers. In Rust, the compiler plays a gatekeeper role by refusing to
-compile code with these elusive bugs, including concurrency bugs. By working
-alongside the compiler, the team can spend their time focusing on the program’s
-logic rather than chasing down bugs.
+Rust กำลังพิสูจน์ตัวเองว่าเป็นเครื่องมือที่มีประสิทธิภาพสำหรับการทำงานร่วมกันในทีมขนาดใหญ่ ซึ่งอาจมีสมาชิกที่มีพื้นฐานด้านการเขียนโปรแกรมระดับระบบไม่เท่ากัน 
+โค้ดระดับต่ำ (low-level code) มักเต็มไปด้วยบั๊กยากๆ ที่มองไม่เห็น ซึ่งในภาษาอื่นๆ มักต้องอาศัยการทดสอบจำนวนมากหรือการรีวิวโค้ดอย่างละเอียดจากนักพัฒนาที่มีประสบการณ์เท่านั้นจึงจะเจอ แต่ใน Rust คอมไพเลอร์จะทำหน้าที่เป็น “ด่านตรวจ” ที่ไม่ยอมให้โค้ดที่มีที่มองไม่เห็นเหล่านี้ (รวมถึงบั๊กที่เกี่ยวกับการทำงานพร้อมกันหรือ concurrency bugs) ผ่านไปได้ง่ายๆ
+ด้วยการทำงานร่วมกับคอมไพเลอร์ ทีมสามารถโฟกัสที่ตรรกะของโปรแกรมได้มากขึ้น แทนที่จะเสียเวลาไล่ล่าบั๊กจุกจิก
 
-Rust also brings contemporary developer tools to the systems programming world:
+นอกจากนี้ Rust ยังนำเครื่องมือทันสมัยมาใช้ในโลกของระบบโปรแกรมมิ่งอีกด้วย เช่น:
 
-- Cargo, the included dependency manager and build tool, makes adding,
-  compiling, and managing dependencies painless and consistent across the Rust
-  ecosystem.
-- The Rustfmt formatting tool ensures a consistent coding style across
-  developers.
-- The rust-analyzer powers Integrated Development Environment (IDE)
-  integration for code completion and inline error messages.
+- Cargo, ครื่องมือจัดการ dependencies และ build tool ที่รวมมาให้ในตัว ทำให้การติดตั้ง คอมไพล์ และจัดการไลบรารีเป็นเรื่องง่ายและเป็นมาตรฐานเดียวกันทั้งระบบนิเวศของ Rust
+- The Rustfmt เครื่องมือจัดรูปแบบโค้ดให้อัตโนมัติ เพื่อให้โค้ดของนักพัฒนาทุกคนมีสไตล์เดียวกัน
+- The rust-analyzer เครื่องมือเบื้องหลังที่ช่วยให้ IDE แสดงข้อความแนะนำ เติมโค้ด และรายงานข้อผิดพลาดแบบเรียลไทม์
 
-By using these and other tools in the Rust ecosystem, developers can be
-productive while writing systems-level code.
+ด้วยเครื่องมือเหล่านี้และอีกมากมายในระบบนิเวศของ Rust  นักพัฒนาจึงสามารถเขียนโค้ดระดับระบบได้อย่างมีประสิทธิภาพ โดยไม่ต้องแลกกับประสบการณ์การทำงานที่ดี
 
 ### Students
 
