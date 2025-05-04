@@ -87,53 +87,37 @@ cd ../../..
 
 โค้ดนี้กำลังพิมพ์ข้อความแจ้ง (prompt) ที่ระบุว่าเกมคืออะไร และขอให้ผู้ใช้ป้อนข้อมูล (input)
 
-### Storing Values with Variables
+### การจัดเก็บค่าด้วยตัวแปร
 
-Next, we’ll create a _variable_ to store the user input, like this:
+ต่อไป เราจะสร้าง ตัวแปร เพื่อจัดเก็บ Input ที่ผู้ใช้ป้อนเข้ามา ดังนี้:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:string}}
 ```
 
-Now the program is getting interesting! There’s a lot going on in this little
-line. We use the `let` statement to create the variable. Here’s another example:
+ตอนนี้โปรแกรมเริ่มน่าสนใจแล้ว! มีหลายสิ่งเกิดขึ้นในบรรทัดเล็กๆ นี้ เราใช้คำสั่ง `let` เพื่อสร้างตัวแปร นี่คืออีกตัวอย่างหนึ่ง:
 
 ```rust,ignore
 let apples = 5;
 ```
 
-This line creates a new variable named `apples` and binds it to the value 5. In
-Rust, variables are immutable by default, meaning once we give the variable a
-value, the value won’t change. We’ll be discussing this concept in detail in
-the [“Variables and Mutability”][variables-and-mutability]<!-- ignore -->
-section in Chapter 3. To make a variable mutable, we add `mut` before the
-variable name:
+บรรทัดนี้สร้างตัวแปรใหม่ชื่อ `apples` และผูกมันกับค่า 5 ใน Rust ตัวแปรเป็น Immutable โดยค่าเริ่มต้น ซึ่งหมายความว่าเมื่อเรากำหนดค่าให้กับตัวแปรแล้ว ค่าจะไม่เปลี่ยนแปลง เราจะพูดถึงแนวคิดนี้ในรายละเอียดในส่วน  [“Variables and Mutability”][variables-and-mutability]<!-- ignore -->
+ในบทที่ 3 หากต้องการทำให้ตัวแปรเป็น Mutable เราจะเพิ่ม `mut` ก่อนชื่อตัวแปร:
 
 ```rust,ignore
 let apples = 5; // immutable
 let mut bananas = 5; // mutable
 ```
 
-> Note: The `//` syntax starts a comment that continues until the end of the
-> line. Rust ignores everything in comments. We’ll discuss comments in more
-> detail in [Chapter 3][comments]<!-- ignore -->.
+> หมายเหตุไวยากรณ์ // เริ่มต้น Comment ซึ่งจะดำเนินต่อไปจนกระทั่งสิ้นสุดบรรทัด Rust จะละเว้นทุกสิ่งที่อยู่ใน Comment เราจะพูดถึง Comment ในรายละเอียดเพิ่มเติมใน[Chapter 3][comments]<!-- ignore -->.
 
-Returning to the guessing game program, you now know that `let mut guess` will
-introduce a mutable variable named `guess`. The equal sign (`=`) tells Rust we
-want to bind something to the variable now. On the right of the equal sign is
-the value that `guess` is bound to, which is the result of calling
-`String::new`, a function that returns a new instance of a `String`.
-[`String`][string]<!-- ignore --> is a string type provided by the standard
-library that is a growable, UTF-8 encoded bit of text.
 
-The `::` syntax in the `::new` line indicates that `new` is an associated
-function of the `String` type. An _associated function_ is a function that’s
-implemented on a type, in this case `String`. This `new` function creates a
-new, empty string. You’ll find a `new` function on many types because it’s a
-common name for a function that makes a new value of some kind.
+กลับมาที่โปรแกรมเกมทายตัวเลข ตอนนี้คุณรู้แล้วว่า `let mut guess` จะประกาศตัวแปร Mutable ชื่อ `guess` เครื่องหมายเท่ากับ (`=`) บอก Rust ว่าเราต้องการผูกบางสิ่งเข้ากับตัวแปรนี้ ตอนด้านขวาของเครื่องหมายเท่ากับคือค่าที่ `guess` ถูกผูกไว้ ซึ่งเป็นผลลัพธ์ของการเรียก `String::new` ซึ่งเป็นฟังก์ชันที่คืนค่า Instance ใหม่ของ `String`.
+[`String`][string]<!-- ignore --> String Type ที่ Standard Library จัดเตรียมไว้ให้ ซึ่งสามารถขยายขนาดได้และเป็นลำดับของข้อความที่เข้ารหัสแบบ UTF-8
 
-In full, the `let mut guess = String::new();` line has created a mutable
-variable that is currently bound to a new, empty instance of a `String`. Whew!
+ไวยากรณ์ `::` ในบรรทัด `::new` บ่งชี้ว่า `new` เป็น Associated Function ของ Type `String` _Associated Function_ คือฟังก์ชันที่ถูก Implement บน Type ในกรณีนี้คือ `String` ฟังก์ชัน `new` นี้จะสร้าง String ว่างเปล่า Instance ใหม่ คุณจะพบฟังก์ชัน `new` ในหลายๆ Type เนื่องจากเป็นชื่อทั่วไปสำหรับฟังก์ชันที่สร้างค่าใหม่ของ Type นั้นๆ
+
+โดยรวมแล้ว บรรทัด `let mut guess = String::new();` ได้สร้างตัวแปร Mutable ที่ปัจจุบันถูกผูกไว้กับ Instance ใหม่ที่เป็น `String` ว่างเปล่า ว้าว!
 
 ### Receiving User Input
 
