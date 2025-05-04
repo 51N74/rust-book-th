@@ -1,33 +1,21 @@
-# Programming a Guessing Game
+# การเขียนโปรแกรมเกมทายตัวเลข
 
-Let’s jump into Rust by working through a hands-on project together! This
-chapter introduces you to a few common Rust concepts by showing you how to use
-them in a real program. You’ll learn about `let`, `match`, methods, associated
-functions, external crates, and more! In the following chapters, we’ll explore
-these ideas in more detail. In this chapter, you’ll just practice the
-fundamentals.
+มาเริ่มต้นการเรียนรู้ Rust อย่างจริงจังด้วยการทำโปรเจกต์ไปพร้อมๆ กันเลยครับ! บทนี้จะแนะนำแนวคิดพื้นฐานของ Rust บางส่วน โดยแสดงให้เห็นวิธีการใช้งานในโปรแกรมจริง คุณจะได้เรียนรู้เกี่ยวกับ `let`, `match`, methods, associated functions, external crates และอื่นๆ อีกมากมาย! ในบทต่อๆ ไป เราจะสำรวจแนวคิดเหล่านี้ในรายละเอียดมากขึ้น แต่ในบทนี้ เราจะเน้นการฝึกฝนพื้นฐานครับ
 
-We’ll implement a classic beginner programming problem: a guessing game. Here’s
-how it works: the program will generate a random integer between 1 and 100. It
-will then prompt the player to enter a guess. After a guess is entered, the
-program will indicate whether the guess is too low or too high. If the guess is
-correct, the game will print a congratulatory message and exit.
+เราจะสร้างโปรแกรมแก้ปัญหาคลาสสิกสำหรับผู้เริ่มต้นเขียนโปรแกรม นั่นคือเกมทายตัวเลข หลักการทำงานของมันคือ: โปรแกรมจะสร้างตัวเลขสุ่มจำนวนเต็มระหว่าง 1 ถึง 100 จากนั้นจะให้ผู้เล่นป้อนตัวเลขที่คาดเดา หลังจากป้อนตัวเลขแล้ว โปรแกรมจะบอกว่าตัวเลขที่ทายนั้นต่ำไปหรือสูงไป หากตัวเลขที่ทายถูกต้อง เกมจะแสดงข้อความแสดงความยินดีและจบการทำงาน
 
-## Setting Up a New Project
+## การตั้งค่าโปรเจกต์ใหม่
 
-To set up a new project, go to the _projects_ directory that you created in
-Chapter 1 and make a new project using Cargo, like so:
+ในการตั้งค่าโปรเจกต์ใหม่ ให้ไปยังไดเรกทอรี _projects_ ที่คุณสร้างไว้ในบทที่ 1 และสร้างโปรเจกต์ใหม่โดยใช้ Cargo ดังนี้:
 
 ```console
 $ cargo new guessing_game
 $ cd guessing_game
 ```
 
-The first command, `cargo new`, takes the name of the project (`guessing_game`)
-as the first argument. The second command changes to the new project’s
-directory.
+คำสั่งแรก `cargo new guessing_game` จะสร้างไดเรกทอรีใหม่ชื่อ `guessing_game` พร้อมกับไฟล์พื้นฐานที่จำเป็นสำหรับโปรเจกต์ Cargo จากนั้น cd guessing_game จะเปลี่ยนไปยังไดเรกทอรีนั้น
 
-Look at the generated _Cargo.toml_ file:
+ดูที่ _Cargo.toml_ file:
 
 <!-- manual-regeneration
 cd listings/ch02-guessing-game-tutorial
@@ -44,8 +32,8 @@ cd ../../..
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/Cargo.toml}}
 ```
 
-As you saw in Chapter 1, `cargo new` generates a “Hello, world!” program for
-you. Check out the _src/main.rs_ file:
+อย่างที่คุณเห็นในบทที่ 1 คำสั่ง `cargo new` จะสร้างโปรแกรม "Hello, world!" ให้คุณ ลองดูไฟล์ _src/main.rs_:
+
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -53,25 +41,17 @@ you. Check out the _src/main.rs_ file:
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/src/main.rs}}
 ```
 
-Now let’s compile this “Hello, world!” program and run it in the same step
-using the `cargo run` command:
+ตอนนี้เรามาคอมไพล์และรันโปรแกรม "Hello, world!" นี้ในขั้นตอนเดียวโดยใช้คำสั่ง `cargo run` กันครับ:
 
 ```console
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/output.txt}}
 ```
 
-The `run` command comes in handy when you need to rapidly iterate on a project,
-as we’ll do in this game, quickly testing each iteration before moving on to
-the next one.
+คุณควรจะเห็นข้อความ "Hello, world!" ปรากฏใน Terminal ของคุณครับ ตอนนี้เราจะเริ่มแก้ไขไฟล์ src/main.rs เพื่อเขียนโค้ดเกมทายตัวเลขของเรากันแล้วครับ
 
-Reopen the _src/main.rs_ file. You’ll be writing all the code in this file.
+## การประมวลผลคำทาย
 
-## Processing a Guess
-
-The first part of the guessing game program will ask for user input, process
-that input, and check that the input is in the expected form. To start, we’ll
-allow the player to input a guess. Enter the code in Listing 2-1 into
-_src/main.rs_.
+ส่วนแรกของโปรแกรมเกมทายตัวเลขคือการขอ Input จากผู้ใช้ ประมวลผล Input นั้น และตรวจสอบว่า Input อยู่ในรูปแบบที่คาดไว้ เพื่อเริ่มต้น เราจะอนุญาตให้ผู้เล่นป้อนตัวเลขที่ทาย ใส่โค้ดใน Listing 2-1 ลงใน _src/main.rs_ ครับ
 
 <Listing number="2-1" file-name="src/main.rs" caption="Code that gets a guess from the user and prints it">
 
@@ -81,43 +61,31 @@ _src/main.rs_.
 
 </Listing>
 
-This code contains a lot of information, so let’s go over it line by line. To
-obtain user input and then print the result as output, we need to bring the
-`io` input/output library into scope. The `io` library comes from the standard
-library, known as `std`:
+โค้ดนี้มีข้อมูลมากมายเลยทีเดียว ดังนั้นเรามาดูกันทีละบรรทัดนะครับ ในการรับ Input จากผู้ใช้แล้วพิมพ์ผลลัพธ์ออกมา เราจำเป็นต้องนำ Input/Output Library (`io`) เข้ามาใน Scope Library `io` นี้มาจาก Standard Library ซึ่งรู้จักกันในชื่อ `std`:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:io}}
 ```
 
-By default, Rust has a set of items defined in the standard library that it
-brings into the scope of every program. This set is called the _prelude_, and
-you can see everything in it [in the standard library documentation][prelude].
+โดยค่าเริ่มต้น Rust มีชุดของ Items ที่ถูกกำหนดไว้ใน Standard Library ซึ่งจะถูกนำเข้ามาใน Scope ของทุกโปรแกรม ชุดนี้เรียกว่า prelude และคุณสามารถดูทุกสิ่งที่มีอยู่ในนั้นได้ใน [in the standard library documentation][prelude].
 
-If a type you want to use isn’t in the prelude, you have to bring that type
-into scope explicitly with a `use` statement. Using the `std::io` library
-provides you with a number of useful features, including the ability to accept
-user input.
+หาก Type ที่คุณต้องการใช้ไม่ได้อยู่ใน prelude คุณจะต้องนำ Type นั้นเข้ามาใน Scope อย่างชัดเจนด้วยคำสั่ง `use` การใช้ Library `std::io` ช่วยให้คุณมีคุณสมบัติที่มีประโยชน์มากมาย รวมถึงความสามารถในการรับ Input จากผู้ใช้
 
-As you saw in Chapter 1, the `main` function is the entry point into the
-program:
+อย่างที่คุณเห็นในบทที่ 1 ฟังก์ชัน `main` เป็นจุดเริ่มต้นการทำงานของโปรแกรม:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:main}}
 ```
 
-The `fn` syntax declares a new function; the parentheses, `()`, indicate there
-are no parameters; and the curly bracket, `{`, starts the body of the function.
+ไวยากรณ์ `fn` ประกาศฟังก์ชันใหม่ วงเล็บ `()` บ่งชี้ว่าไม่มีพารามิเตอร์ และวงเล็บปีกกา `{` เปิดส่วนเนื้อหาของฟังก์ชัน
 
-As you also learned in Chapter 1, `println!` is a macro that prints a string to
-the screen:
+และอย่างที่คุณได้เรียนรู้ในบทที่ 1 `println!` เป็น Macro ที่พิมพ์ String ออกทางหน้าจอ:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:print}}
 ```
 
-This code is printing a prompt stating what the game is and requesting input
-from the user.
+โค้ดนี้กำลังพิมพ์ข้อความแจ้ง (prompt) ที่ระบุว่าเกมคืออะไร และขอให้ผู้ใช้ป้อนข้อมูล (input)
 
 ### Storing Values with Variables
 
