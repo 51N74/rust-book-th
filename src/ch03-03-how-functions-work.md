@@ -1,13 +1,8 @@
 ## Functions
 
-Functions are prevalent in Rust code. You’ve already seen one of the most
-important functions in the language: the `main` function, which is the entry
-point of many programs. You’ve also seen the `fn` keyword, which allows you to
-declare new functions.
+ฟังก์ชันเป็นสิ่งที่พบได้ทั่วไปในโค้ด Rust คุณได้เห็นฟังก์ชันที่สำคัญที่สุดฟังก์ชันหนึ่งในภาษาแล้ว นั่นคือฟังก์ชัน `main` ซึ่งเป็นจุดเริ่มต้นของโปรแกรมจำนวนมาก คุณยังได้เห็น Keyword `fn` ซึ่งช่วยให้คุณประกาศฟังก์ชันใหม่ได้
 
-Rust code uses _snake case_ as the conventional style for function and variable
-names, in which all letters are lowercase and underscores separate words.
-Here’s a program that contains an example function definition:
+โค้ด Rust ใช้ _Snake Case_ เป็นรูปแบบการตั้งชื่อที่เป็นธรรมเนียมสำหรับชื่อฟังก์ชันและตัวแปร โดยตัวอักษรทั้งหมดเป็นตัวพิมพ์เล็ก และใช้ Underscore คั่นระหว่างคำ นี่คือโปรแกรมที่มีตัวอย่างการกำหนดฟังก์ชัน:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -15,40 +10,24 @@ Here’s a program that contains an example function definition:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-16-functions/src/main.rs}}
 ```
 
-We define a function in Rust by entering `fn` followed by a function name and a
-set of parentheses. The curly brackets tell the compiler where the function
-body begins and ends.
+เรากำหนดฟังก์ชันใน Rust โดยการพิมพ์ `fn` ตามด้วยชื่อฟังก์ชันและชุดของวงเล็บ เครื่องหมายปีกกาบอก Compiler ว่าส่วนใดคือจุดเริ่มต้นและจุดสิ้นสุดของ Body ฟังก์ชัน
 
-We can call any function we’ve defined by entering its name followed by a set
-of parentheses. Because `another_function` is defined in the program, it can be
-called from inside the `main` function. Note that we defined `another_function`
-_after_ the `main` function in the source code; we could have defined it before
-as well. Rust doesn’t care where you define your functions, only that they’re
-defined somewhere in a scope that can be seen by the caller.
+เราสามารถเรียกใช้ฟังก์ชันใดๆ ที่เรากำหนดไว้ได้โดยการพิมพ์ชื่อของมันตามด้วยชุดของวงเล็บ เนื่องจาก `another_function` ถูกกำหนดไว้ในโปรแกรม จึงสามารถเรียกใช้ได้จากภายในฟังก์ชัน `main` โปรดทราบว่าเรากำหนด `another_function` ไว้หลังฟังก์ชัน `main` ใน Source Code เราสามารถกำหนดไว้ก่อนก็ได้ Rust ไม่สนใจว่าคุณจะกำหนดฟังก์ชันของคุณไว้ที่ใด เพียงแค่ให้แน่ใจว่ามันถูกกำหนดไว้ใน Scope ที่ Caller สามารถมองเห็นได้
 
-Let’s start a new binary project named _functions_ to explore functions
-further. Place the `another_function` example in _src/main.rs_ and run it. You
-should see the following output:
+มาเริ่มต้น Binary Project ใหม่ชื่อ _functions_ เพื่อสำรวจฟังก์ชันเพิ่มเติมกันครับ ใส่ตัวอย่าง `another_function` ใน _src/main.rs_ แล้วรัน คุณควรเห็น Output ดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-16-functions/output.txt}}
 ```
-
-The lines execute in the order in which they appear in the `main` function.
-First the “Hello, world!” message prints, and then `another_function` is called
-and its message is printed.
+บรรทัดต่างๆ จะถูก Execute ตามลำดับที่ปรากฏในฟังก์ชัน `main` ก่อนอื่น ข้อความ "Hello, world!" จะถูกพิมพ์ออกมา จากนั้น `another_function` จะถูกเรียกใช้และข้อความของมันก็จะถูกพิมพ์ออกมาครับ
 
 ### Parameters
 
-We can define functions to have _parameters_, which are special variables that
-are part of a function’s signature. When a function has parameters, you can
-provide it with concrete values for those parameters. Technically, the concrete
-values are called _arguments_, but in casual conversation, people tend to use
-the words _parameter_ and _argument_ interchangeably for either the variables
-in a function’s definition or the concrete values passed in when you call a
-function.
+เราสามารถกำหนดให้ฟังก์ชันมี _Parameters_ ซึ่งเป็นตัวแปรพิเศษที่เป็นส่วนหนึ่งของ Signature ของฟังก์ชัน เมื่อฟังก์ชันมี Parameters คุณสามารถให้ค่าที่เป็นรูปธรรมสำหรับ Parameters เหล่านั้นได้ ในทางเทคนิคแล้ว ค่าที่เป็นรูปธรรมเหล่านั้นเรียกว่า _Arguments_ แต่ในการสนทนาทั่วไป ผู้คนมักใช้คำว่า _Parameter_ และ _Argument_ สลับกัน ไม่ว่าจะเป็นตัวแปรใน Definition ของฟังก์ชัน หรือค่าที่เป็นรูปธรรมที่ส่งเข้าไปเมื่อคุณเรียกใช้ฟังก์ชัน
 
-In this version of `another_function` we add a parameter:
+
+
+ใน another_function Version นี้ เราได้เพิ่ม Parameter เข้าไป:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -56,65 +35,41 @@ In this version of `another_function` we add a parameter:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-17-functions-with-parameters/src/main.rs}}
 ```
 
-Try running this program; you should get the following output:
+เมื่อคุณรันโปรแกรมนี้ Output จะเป็นดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-17-functions-with-parameters/output.txt}}
 ```
 
-The declaration of `another_function` has one parameter named `x`. The type of
-`x` is specified as `i32`. When we pass `5` in to `another_function`, the
-`println!` macro puts `5` where the pair of curly brackets containing `x` was
-in the format string.
 
-In function signatures, you _must_ declare the type of each parameter. This is
-a deliberate decision in Rust’s design: requiring type annotations in function
-definitions means the compiler almost never needs you to use them elsewhere in
-the code to figure out what type you mean. The compiler is also able to give
-more helpful error messages if it knows what types the function expects.
+การประกาศ `another_function` มี Parameter หนึ่งชื่อ `x` Type ของ `x` ถูกระบุเป็น `i32` เมื่อเราส่งค่า `5` เข้าไปใน `another_function` Macro `println!` จะใส่ `5` แทนที่วงเล็บปีกกาคู่ที่บรรจุ x ไว้ใน Format String
 
-When defining multiple parameters, separate the parameter declarations with
-commas, like this:
+ใน Function Signatures คุณ _ต้อง_ ประกาศ Type ของ Parameter แต่ละตัว นี่เป็นการตัดสินใจโดยเจตนาในการออกแบบของ Rust การกำหนดให้มี Type Annotations ใน Function Definitions หมายความว่า Compiler แทบจะไม่ต้องการให้คุณใช้ Type Annotations ที่อื่นในโค้ดเพื่อระบุ Type ที่คุณต้องการ Compiler ยังสามารถให้ Error Messages ที่เป็นประโยชน์มากขึ้นได้ หากทราบว่าฟังก์ชันนั้นคาดหวัง Type ใด
+
+เมื่อกำหนด Parameters หลายตัว ให้คั่น Declaration ของ Parameter ด้วยเครื่องหมายจุลภาค ดังนี้:
 
 <span class="filename">Filename: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-18-functions-with-multiple-parameters/src/main.rs}}
 ```
+ตัวอย่างนี้สร้างฟังก์ชันชื่อ `print_labeled_measurement` ที่มีสอง Parameters Parameter แรกชื่อ `value` และเป็น Type `i32` Parameter ที่สองชื่อ `unit_label` และเป็น Type `char` จากนั้นฟังก์ชันจะพิมพ์ข้อความที่มีทั้ง `value` และ `unit_label`
 
-This example creates a function named `print_labeled_measurement` with two
-parameters. The first parameter is named `value` and is an `i32`. The second is
-named `unit_label` and is type `char`. The function then prints text containing
-both the `value` and the `unit_label`.
-
-Let’s try running this code. Replace the program currently in your _functions_
-project’s _src/main.rs_ file with the preceding example and run it using `cargo
-run`:
+ลองรันโค้ดนี้กันครับ แทนที่โปรแกรมปัจจุบันในไฟล์ _src/main.rs_ ของ Project _functions_ ด้วยตัวอย่างก่อนหน้า แล้วรันโดยใช้ cargo run:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-18-functions-with-multiple-parameters/output.txt}}
 ```
-
-Because we called the function with `5` as the value for `value` and `'h'` as
-the value for `unit_label`, the program output contains those values.
+เนื่องจากเราเรียกใช้ฟังก์ชันด้วย `5` เป็นค่าสำหรับ `value` และ `'h'` เป็นค่าสำหรับ `unit_label` Output ของโปรแกรมจึงมีค่าเหล่านั้นครับ
 
 ### Statements and Expressions
 
-Function bodies are made up of a series of statements optionally ending in an
-expression. So far, the functions we’ve covered haven’t included an ending
-expression, but you have seen an expression as part of a statement. Because
-Rust is an expression-based language, this is an important distinction to
-understand. Other languages don’t have the same distinctions, so let’s look at
-what statements and expressions are and how their differences affect the bodies
-of functions.
+Body ของฟังก์ชันประกอบด้วยชุดของ Statements ที่อาจจบลงด้วย Expression ฟังก์ชันที่เรากล่าวถึงไปก่อนหน้านี้ยังไม่มี Ending Expression แต่คุณได้เห็น Expression เป็นส่วนหนึ่งของ Statement แล้ว เนื่องจาก Rust เป็นภาษาที่ใช้ Expression เป็นหลัก การทำความเข้าใจความแตกต่างนี้จึงมีความสำคัญ ภาษาอื่นๆ ไม่มีความแตกต่างเช่นนี้ ดังนั้นเรามาดูกันว่า Statements และ Expressions คืออะไร และความแตกต่างของมันส่งผลต่อ Body ของฟังก์ชันอย่างไร
 
-- **Statements** are instructions that perform some action and do not return
-  a value.
-- **Expressions** evaluate to a resultant value. Let’s look at some examples.
+- **Statements** คือคำสั่งที่ดำเนินการบางอย่างและไม่ Return ค่า
+- **Expressions** ประเมินค่าและให้ผลลัพธ์เป็นค่าหนึ่งค่า มาดูตัวอย่างกันครับ
 
-We’ve actually already used statements and expressions. Creating a variable and
-assigning a value to it with the `let` keyword is a statement. In Listing 3-1,
-`let y = 6;` is a statement.
+จริงๆ แล้วเราได้ใช้ Statements และ Expressions ไปแล้ว การสร้างตัวแปรและกำหนดค่าให้มันด้วย Keyword `let` คือ Statement ใน Listing 3-1, `let y = 6;` คือ Statement ครับ
 
 <Listing number="3-1" file-name="src/main.rs" caption="A `main` function declaration containing one statement">
 
@@ -124,12 +79,9 @@ assigning a value to it with the `let` keyword is a statement. In Listing 3-1,
 
 </Listing>
 
-Function definitions are also statements; the entire preceding example is a
-statement in itself. (As we will see below, _calling_ a function is not a
-statement.)
+การกำหนดฟังก์ชันก็เป็น Statement เช่นกัน ตัวอย่างทั้งหมดที่เราเพิ่งดูกันไปนั้นเป็น Statement ในตัวมันเอง (ดังที่เราจะเห็นต่อไป การ เรียกใช้ ฟังก์ชันไม่ใช่ Statement)
 
-Statements do not return values. Therefore, you can’t assign a `let` statement
-to another variable, as the following code tries to do; you’ll get an error:
+Statements ไม่ Return ค่า ดังนั้นคุณจึงไม่สามารถกำหนด `let` Statement ให้กับตัวแปรอื่นได้ ดังที่โค้ดต่อไปนี้พยายามทำ ซึ่งจะทำให้เกิด Error:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -137,25 +89,15 @@ to another variable, as the following code tries to do; you’ll get an error:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-19-statements-vs-expressions/src/main.rs}}
 ```
 
-When you run this program, the error you’ll get looks like this:
+เมื่อคุณรันโปรแกรมนี้ Error ที่คุณจะได้รับจะมีลักษณะดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-19-statements-vs-expressions/output.txt}}
 ```
 
-The `let y = 6` statement does not return a value, so there isn’t anything for
-`x` to bind to. This is different from what happens in other languages, such as
-C and Ruby, where the assignment returns the value of the assignment. In those
-languages, you can write `x = y = 6` and have both `x` and `y` have the value
-`6`; that is not the case in Rust.
+Statement `let y = 6` ไม่ Return ค่า ดังนั้นจึงไม่มีอะไรให้ `x` ผูกค่าด้วย นี่แตกต่างจากสิ่งที่เกิดขึ้นในภาษาอื่นๆ เช่น C และ Ruby ซึ่งการกำหนดค่าจะ Return ค่าของการกำหนด ในภาษาเหล่านั้น คุณสามารถเขียน `x =y = 6 `และทำให้ทั้ง `x` และ `y` มีค่าเป็น `6` ได้ ซึ่งไม่ใช่กรณีใน Rust
 
-Expressions evaluate to a value and make up most of the rest of the code that
-you’ll write in Rust. Consider a math operation, such as `5 + 6`, which is an
-expression that evaluates to the value `11`. Expressions can be part of
-statements: in Listing 3-1, the `6` in the statement `let y = 6;` is an
-expression that evaluates to the value `6`. Calling a function is an
-expression. Calling a macro is an expression. A new scope block created with
-curly brackets is an expression, for example:
+Expressions ประเมินค่าและให้ผลลัพธ์เป็นค่าหนึ่งค่า และเป็นส่วนประกอบหลักของโค้ดส่วนใหญ่ที่คุณจะเขียนใน Rust พิจารณาการดำเนินการทางคณิตศาสตร์ เช่น `5 + 6` ซึ่งเป็น Expression ที่ประเมินค่าได้เป็น `11` Expressions สามารถเป็นส่วนหนึ่งของ Statements ได้ ใน Listing 3-1 ค่า 6 ใน Statement `let y = 6;` คือ Expression ที่ประเมินค่าได้เป็น 6 การเรียกใช้ฟังก์ชันคือ Expression การเรียกใช้ Macro คือ Expression Scope Block ใหม่ที่สร้างด้วยเครื่องหมายปีกกาคือ Expression ตัวอย่างเช่น:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -172,23 +114,14 @@ This expression:
 }
 ```
 
-is a block that, in this case, evaluates to `4`. That value gets bound to `y`
-as part of the `let` statement. Note that the `x + 1` line doesn’t have a
-semicolon at the end, which is unlike most of the lines you’ve seen so far.
-Expressions do not include ending semicolons. If you add a semicolon to the end
-of an expression, you turn it into a statement, and it will then not return a
-value. Keep this in mind as you explore function return values and expressions
-next.
+
+คือ Block ที่ในกรณีนี้ประเมินค่าได้เป็น `4` ค่านี้จะถูกผูกไว้กับ `y` ซึ่งเป็นส่วนหนึ่งของ Statement `let` โปรดสังเกตว่าบรรทัด `x + 1` ไม่มีเครื่องหมายเซมิโคลอนที่ส่วนท้าย ซึ่งแตกต่างจากบรรทัดส่วนใหญ่ที่คุณเห็นมาจนถึงตอนนี้ Expressions จะไม่มีเครื่องหมายเซมิโคลอนที่ส่วนท้าย หากคุณเพิ่มเครื่องหมายเซมิโคลอนที่ส่วนท้ายของ Expression คุณจะเปลี่ยนให้มันกลายเป็น Statement และมันจะไม่ Return ค่า โปรดจำสิ่งนี้ไว้ในขณะที่คุณสำรวจค่า Return ของฟังก์ชันและ Expressions ในหัวข้อถัดไป
 
 ### Functions with Return Values
 
-Functions can return values to the code that calls them. We don’t name return
-values, but we must declare their type after an arrow (`->`). In Rust, the
-return value of the function is synonymous with the value of the final
-expression in the block of the body of a function. You can return early from a
-function by using the `return` keyword and specifying a value, but most
-functions return the last expression implicitly. Here’s an example of a
-function that returns a value:
+
+ฟังก์ชันสามารถ Return ค่าให้กับ Code ที่เรียกใช้ได้ เราไม่ได้ตั้งชื่อให้กับค่า Return แต่เราต้องประกาศ Type ของมันหลังจากเครื่องหมายลูกศร (`->`) ใน Rust ค่า Return ของฟังก์ชันจะมีความหมายเหมือนกันกับค่าของ Expression สุดท้ายใน Block ของ Body ฟังก์ชัน คุณสามารถ Return ค่าออกจากฟังก์ชันก่อนหน้านี้ได้โดยใช้ Keyword `return` และระบุค่า แต่ฟังก์ชันส่วนใหญ่จะ Return Expression สุดท้ายโดยปริยาย นี่คือตัวอย่างของฟังก์ชันที่ Return ค่า:
+
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -196,30 +129,20 @@ function that returns a value:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-21-function-return-values/src/main.rs}}
 ```
 
-There are no function calls, macros, or even `let` statements in the `five`
-function—just the number `5` by itself. That’s a perfectly valid function in
-Rust. Note that the function’s return type is specified too, as `-> i32`. Try
-running this code; the output should look like this:
+ในฟังก์ชัน five ไม่มี Function Calls, Macros หรือแม้แต่ `let` Statements มีเพียงตัวเลข `5` โดดๆ เท่านั้น นั่นเป็นฟังก์ชันที่ถูกต้องสมบูรณ์แบบใน Rust โปรดสังเกตว่า Type ของค่า Return ของฟังก์ชันก็ถูกระบุด้วยเช่นกัน คือ `-> i32` ลองรันโค้ดนี้ดูครับ Output ควรจะเป็นดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-21-function-return-values/output.txt}}
 ```
 
-The `5` in `five` is the function’s return value, which is why the return type
-is `i32`. Let’s examine this in more detail. There are two important bits:
-first, the line `let x = five();` shows that we’re using the return value of a
-function to initialize a variable. Because the function `five` returns a `5`,
-that line is the same as the following:
+ค่า `5` ในฟังก์ชัน `five` คือค่า Return ของฟังก์ชัน ซึ่งเป็นเหตุผลว่าทำไม Return Type จึงเป็น `i32` มาพิจารณาสิ่งนี้ในรายละเอียดกันครับ มีสองส่วนที่สำคัญ: ประการแรก บรรทัด `let x = five();` แสดงให้เห็นว่าเรากำลังใช้ค่า Return ของฟังก์ชันเพื่อ Initialize ตัวแปร เนื่องจากฟังก์ชัน `five` Return ค่า 5 บรรทัดนั้นจึงเหมือนกับบรรทัดต่อไปนี้:
 
 ```rust
 let x = 5;
 ```
+ประการที่สอง ฟังก์ชัน `five` ไม่มี Parameters และกำหนด Type ของค่า Return แต่ Body ของฟังก์ชันมีเพียง `5` โดดๆ โดยไม่มีเครื่องหมายเซมิโคลอน เพราะมันเป็น Expression ที่เราต้องการ Return ค่า
 
-Second, the `five` function has no parameters and defines the type of the
-return value, but the body of the function is a lonely `5` with no semicolon
-because it’s an expression whose value we want to return.
-
-Let’s look at another example:
+มาดูอีกตัวอย่างกันครับ:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -227,9 +150,7 @@ Let’s look at another example:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-22-function-parameter-and-return/src/main.rs}}
 ```
 
-Running this code will print `The value of x is: 6`. But if we place a
-semicolon at the end of the line containing `x + 1`, changing it from an
-expression to a statement, we’ll get an error:
+การรันโค้ดนี้จะพิมพ์ `The value of x is: 6` แต่ถ้าเราใส่เครื่องหมายเซมิโคลอนที่ท้ายบรรทัดที่มี `x + 1` เปลี่ยนจาก Expression เป็น Statement เราจะได้รับ Error:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -243,10 +164,4 @@ Compiling this code produces an error, as follows:
 {{#include ../listings/ch03-common-programming-concepts/no-listing-23-statements-dont-return-values/output.txt}}
 ```
 
-The main error message, `mismatched types`, reveals the core issue with this
-code. The definition of the function `plus_one` says that it will return an
-`i32`, but statements don’t evaluate to a value, which is expressed by `()`,
-the unit type. Therefore, nothing is returned, which contradicts the function
-definition and results in an error. In this output, Rust provides a message to
-possibly help rectify this issue: it suggests removing the semicolon, which
-would fix the error.
+ข้อความ Error หลักคือ `mismatched types` (ประเภทไม่ตรงกัน) เผยให้เห็นปัญหาหลักของโค้ดนี้ การกำหนดของฟังก์ชัน `plus_one` ระบุว่าจะ Return ค่า `i32` แต่ Statements ไม่ได้ประเมินค่าเป็นค่าใดๆ ซึ่งแสดงด้วย `()` หรือ Unit Type ดังนั้นจึงไม่มีอะไรถูก Return ซึ่งขัดแย้งกับการกำหนดของฟังก์ชันและส่งผลให้เกิด Error ใน Output นี้ Rust ให้ข้อความที่อาจช่วยแก้ไขปัญหานี้ โดยแนะนำให้ลบเครื่องหมายเซมิโคลอน ซึ่งจะแก้ไข Error ได้ครับ

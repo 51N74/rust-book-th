@@ -1,18 +1,13 @@
 ## Control Flow
 
-The ability to run some code depending on whether a condition is `true` and to
-run some code repeatedly while a condition is `true` are basic building blocks
-in most programming languages. The most common constructs that let you control
-the flow of execution of Rust code are `if` expressions and loops.
+ความสามารถในการรันโค้ดบางส่วนขึ้นอยู่กับว่าเงื่อนไขเป็น `true` หรือไม่ และการรันโค้ดบางส่วนซ้ำๆ ในขณะที่เงื่อนไขเป็น`true` เป็นพื้นฐานสำคัญในภาษา Programming ส่วนใหญ่ โครงสร้างที่พบบ่อยที่สุดที่ช่วยให้คุณควบคุม Flow การ Execute ของโค้ด Rust คือ `If` Expressions และ Loops ครับ
 
 ### `if` Expressions
 
-An `if` expression allows you to branch your code depending on conditions. You
-provide a condition and then state, “If this condition is met, run this block
-of code. If the condition is not met, do not run this block of code.”
 
-Create a new project called _branches_ in your _projects_ directory to explore
-the `if` expression. In the _src/main.rs_ file, input the following:
+`if` Expression ช่วยให้คุณสามารถแตกแขนงโค้ดของคุณได้ตามเงื่อนไข คุณระบุเงื่อนไข จากนั้นกล่าวว่า "ถ้าเงื่อนไขนี้เป็นจริง ให้รัน Block ของโค้ดนี้ ถ้าเงื่อนไขไม่เป็นจริง อย่ารัน Block ของโค้ดนี้"
+
+สร้าง Project ใหม่ชื่อ _branches_ ใน Directory _projects_ ของคุณเพื่อสำรวจ `if` Expression ในไฟล์ _src/main.rs_ ให้ป้อนโค้ดต่อไปนี้:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -20,43 +15,31 @@ the `if` expression. In the _src/main.rs_ file, input the following:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-26-if-true/src/main.rs}}
 ```
 
-All `if` expressions start with the keyword `if`, followed by a condition. In
-this case, the condition checks whether or not the variable `number` has a
-value less than 5. We place the block of code to execute if the condition is
-`true` immediately after the condition inside curly brackets. Blocks of code
-associated with the conditions in `if` expressions are sometimes called _arms_,
-just like the arms in `match` expressions that we discussed in the [“Comparing
+If Expressions ทั้งหมดเริ่มต้นด้วย Keyword `if` ตามด้วยเงื่อนไข ในกรณีนี้ เงื่อนไขตรวจสอบว่าตัวแปร `number` มีค่าน้อยกว่า 5 หรือไม่ เราวาง Block ของโค้ดที่จะ Execute หากเงื่อนไขเป็น `true` ทันทีหลังเงื่อนไขภายในเครื่องหมายปีกกา Block ของโค้ดที่เกี่ยวข้องกับเงื่อนไขใน If Expressions บางครั้งเรียกว่า Arms เช่นเดียวกับ Arms ใน `Match Expressions` ที่เรากล่าวถึงในส่วน [“Comparing
 the Guess to the Secret Number”][comparing-the-guess-to-the-secret-number]<!--
-ignore --> section of Chapter 2.
+ignore --> ของ บทที่ 2
 
-Optionally, we can also include an `else` expression, which we chose to do
-here, to give the program an alternative block of code to execute should the
-condition evaluate to `false`. If you don’t provide an `else` expression and
-the condition is `false`, the program will just skip the `if` block and move on
-to the next bit of code.
+นอกจากนี้ เรายังสามารถใส่ `Else` Expression ซึ่งเราเลือกที่จะทำในที่นี้ เพื่อให้โปรแกรมมี Block ของโค้ดทางเลือกที่จะ Execute หากเงื่อนไขประเมินค่าเป็น `false` หากคุณไม่ใส่ `Else Expression` และเงื่อนไขเป็น `false` โปรแกรมก็จะข้าม If Block ไปและดำเนินการต่อกับโค้ดส่วนถัดไป
 
-Try running this code; you should see the following output:
+ลองรันโค้ดนี้ดูครับ คุณควรจะเห็น Output ดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-26-if-true/output.txt}}
 ```
 
-Let’s try changing the value of `number` to a value that makes the condition
-`false` to see what happens:
+มาลองเปลี่ยนค่าของตัวแปร `number` เป็นค่าที่ทำให้เงื่อนไขเป็น `false` เพื่อดูว่าจะเกิดอะไรขึ้นครับ:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-27-if-false/src/main.rs:here}}
 ```
 
-Run the program again, and look at the output:
+รันโปรแกรม และดูสิ่งที่เกิดขึ้น
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-27-if-false/output.txt}}
 ```
 
-It’s also worth noting that the condition in this code _must_ be a `bool`. If
-the condition isn’t a `bool`, we’ll get an error. For example, try running the
-following code:
+นอกจากนี้ สิ่งสำคัญที่ควรทราบคือเงื่อนไขในโค้ดนี้ ต้อง เป็น Type `bool` หากเงื่อนไขไม่ใช่ `bool` เราจะได้รับ Error ตัวอย่างเช่น ลองรันโค้ดต่อไปนี้:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -64,19 +47,13 @@ following code:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-28-if-condition-must-be-bool/src/main.rs}}
 ```
 
-The `if` condition evaluates to a value of `3` this time, and Rust throws an
-error:
+เงื่อนไข `if` ประเมินค่าเป็น `3` ในครั้งนี้ และ Rust จะแสดง Error:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-28-if-condition-must-be-bool/output.txt}}
 ```
 
-The error indicates that Rust expected a `bool` but got an integer. Unlike
-languages such as Ruby and JavaScript, Rust will not automatically try to
-convert non-Boolean types to a Boolean. You must be explicit and always provide
-`if` with a Boolean as its condition. If we want the `if` code block to run
-only when a number is not equal to `0`, for example, we can change the `if`
-expression to the following:
+Error ชี้ให้เห็นว่า Rust คาดหวัง Type `bool` แต่ได้รับ Integer ซึ่งแตกต่างจากภาษาอย่าง Ruby และ JavaScript ที่ Rust จะไม่พยายามแปลง Type ที่ไม่ใช่ Boolean เป็น Boolean โดยอัตโนมัติ คุณต้องระบุอย่างชัดเจนและให้ if มี Boolean เป็นเงื่อนไขเสมอ หากเราต้องการให้ Block ของโค้ด `if` ทำงานเฉพาะเมื่อตัวเลขไม่เท่ากับ `0` ตัวอย่างเช่น เราสามารถเปลี่ยน `if` Expression เป็นดังนี้:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -84,12 +61,11 @@ expression to the following:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-29-if-not-equal-0/src/main.rs}}
 ```
 
-Running this code will print `number was something other than zero`.
+การรันโค้ดนี้จะพิมพ์ `number was something other than zero`
 
-#### Handling Multiple Conditions with `else if`
+#### การจัดการหลายเงื่อนไขด้วย  `else if`
 
-You can use multiple conditions by combining `if` and `else` in an `else if`
-expression. For example:
+คุณสามารถใช้หลายเงื่อนไขได้โดยการรวม `if` และ `else` เข้าด้วยกันใน `else if` ตัวอย่างเช่น:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -97,28 +73,19 @@ expression. For example:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-30-else-if/src/main.rs}}
 ```
 
-This program has four possible paths it can take. After running it, you should
-see the following output:
+โปรแกรมนี้มีสี่เส้นทางที่เป็นไปได้ หลังจากรันแล้ว คุณควรจะเห็น Output ดังนี้:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-30-else-if/output.txt}}
 ```
 
-When this program executes, it checks each `if` expression in turn and executes
-the first body for which the condition evaluates to `true`. Note that even
-though 6 is divisible by 2, we don’t see the output `number is divisible by 2`,
-nor do we see the `number is not divisible by 4, 3, or 2` text from the `else`
-block. That’s because Rust only executes the block for the first `true`
-condition, and once it finds one, it doesn’t even check the rest.
+เมื่อโปรแกรมนี้ Execute มันจะตรวจสอบแต่ละ `if` ตามลำดับ และ Execute Body แรกที่เงื่อนไขประเมินค่าเป็น `true` โปรดสังเกตว่าแม้ว่า `6 จะหารด้วย 2 ลงตัว` เราก็ไม่เห็น Output number is divisible by 2 และเราก็ไม่เห็นข้อความ `number is not divisible by 4, 3, or 2` จาก `else` Block นั่นเป็นเพราะ Rust จะ Execute Block สำหรับเงื่อนไข `true` แรกเท่านั้น และเมื่อพบแล้ว มันจะไม่ตรวจสอบส่วนที่เหลืออีก
 
-Using too many `else if` expressions can clutter your code, so if you have more
-than one, you might want to refactor your code. Chapter 6 describes a powerful
-Rust branching construct called `match` for these cases.
+การใช้ `else if` มากเกินไปอาจทำให้โค้ดของคุณรก ดังนั้นหากคุณมีมากกว่าหนึ่ง คุณอาจต้องการ Refactor โค้ดของคุณ บทที่ 6 อธิบายโครงสร้างการแตกแขนงที่ทรงพลังของ Rust ที่เรียกว่า `match` สำหรับกรณีเหล่านี้
 
-#### Using `if` in a `let` Statement
+#### การใช้ `if` ใน `let` Statement
 
-Because `if` is an expression, we can use it on the right side of a `let`
-statement to assign the outcome to a variable, as in Listing 3-2.
+เนื่องจาก `if` เป็น Expression เราจึงสามารถใช้มันทางด้านขวาของ `let` Statement เพื่อกำหนดผลลัพธ์ให้กับตัวแปรได้ ดังใน Listing 3-2:
 
 <Listing number="3-2" file-name="src/main.rs" caption="Assigning the result of an `if` expression to a variable">
 
@@ -128,20 +95,15 @@ statement to assign the outcome to a variable, as in Listing 3-2.
 
 </Listing>
 
-The `number` variable will be bound to a value based on the outcome of the `if`
-expression. Run this code to see what happens:
+
+ตัวแปร `number` จะถูกผูกไว้กับค่าที่ขึ้นอยู่กับผลลัพธ์ของ `if` ลองรันโค้ดนี้เพื่อดูว่าจะเกิดอะไรขึ้นครับ:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/listing-03-02/output.txt}}
 ```
 
-Remember that blocks of code evaluate to the last expression in them, and
-numbers by themselves are also expressions. In this case, the value of the
-whole `if` expression depends on which block of code executes. This means the
-values that have the potential to be results from each arm of the `if` must be
-the same type; in Listing 3-2, the results of both the `if` arm and the `else`
-arm were `i32` integers. If the types are mismatched, as in the following
-example, we’ll get an error:
+โปรดจำไว้ว่า Block ของ Code จะประเมินค่าเป็น Expression สุดท้ายใน Block นั้น และตัวเลขเองก็เป็น Expression เช่นกัน ในกรณีนี้ ค่าของ `if` Expression ทั้งหมดจะขึ้นอยู่กับ Block ของ Code ใดที่ถูก Execute ซึ่งหมายความว่าค่าที่มีศักยภาพที่จะเป็นผลลัพธ์จากแต่ละ Arm ของ `if` จะต้องมี Type เดียวกัน ใน Listing 3-2 ผลลัพธ์ของทั้ง `if` Arm และ `else` Arm เป็น Integer Type `i32` หาก Type ไม่ตรงกัน ดังในตัวอย่างต่อไปนี้ เราจะได้รับ Error:
+
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -149,39 +111,26 @@ example, we’ll get an error:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-31-arms-must-return-same-type/src/main.rs}}
 ```
 
-When we try to compile this code, we’ll get an error. The `if` and `else` arms
-have value types that are incompatible, and Rust indicates exactly where to
-find the problem in the program:
+เมื่อเราพยายาม Compile โค้ดนี้ เราจะได้รับ Error ซึ่ง `if` Arm และ `else` Arm มี Type ของค่าที่ไม่เข้ากัน และ Rust จะระบุตำแหน่งที่แน่นอนของปัญหาในโปรแกรม:
+
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-31-arms-must-return-same-type/output.txt}}
 ```
 
-The expression in the `if` block evaluates to an integer, and the expression in
-the `else` block evaluates to a string. This won’t work because variables must
-have a single type, and Rust needs to know at compile time what type the
-`number` variable is, definitively. Knowing the type of `number` lets the
-compiler verify the type is valid everywhere we use `number`. Rust wouldn’t be
-able to do that if the type of `number` was only determined at runtime; the
-compiler would be more complex and would make fewer guarantees about the code
-if it had to keep track of multiple hypothetical types for any variable.
+Expression ใน Block `if` ประเมินค่าเป็น Integer และ Expression ใน Block `else` ประเมินค่าเป็น String ซึ่งจะไม่สามารถทำงานได้ เนื่องจากตัวแปรต้องมี Type เดียว และ Rust จำเป็นต้องทราบ Type ที่แน่นอนของตัวแปร number ณ Compile Time การทราบ Type ของ number ช่วยให้ Compiler สามารถตรวจสอบได้ว่า Type นั้นถูกต้องในทุกๆ ที่ที่เราใช้ `number` Rust จะไม่สามารถทำเช่นนั้นได้หาก Type ของ `number` ถูกกำหนดใน Runtime เท่านั้น Compiler จะมีความซับซ้อนมากขึ้น และจะให้การรับประกันเกี่ยวกับ Code น้อยลง หากต้องติดตาม Type ที่เป็นไปได้หลายแบบสำหรับตัวแปรใดๆ
 
-### Repetition with Loops
+### การทำซ้ำด้วย Loops
 
-It’s often useful to execute a block of code more than once. For this task,
-Rust provides several _loops_, which will run through the code inside the loop
-body to the end and then start immediately back at the beginning. To experiment
-with loops, let’s make a new project called _loops_.
+บ่อยครั้งที่เป็นประโยชน์ที่จะ Execute Block ของ Code มากกว่าหนึ่งครั้ง สำหรับงานนี้ Rust มี _Loops_ หลายประเภท ซึ่งจะรัน Code ภายใน Loop Body ไปจนจบ แล้วเริ่มใหม่ทันทีที่จุดเริ่มต้น เพื่อทดลองกับ Loops มาสร้าง Project ใหม่ชื่อ _loops_ กันครับ
 
-Rust has three kinds of loops: `loop`, `while`, and `for`. Let’s try each one.
+Rust มี Loops สามประเภท: `loop`, `while` และ `for` มาลองแต่ละแบบกันครับ
 
-#### Repeating Code with `loop`
+#### การทำซ้ำ Code ด้วย `loop`
 
-The `loop` keyword tells Rust to execute a block of code over and over again
-forever or until you explicitly tell it to stop.
+Keyword `loop` บอกให้ Rust Execute Block ของ Code ซ้ำแล้วซ้ำเล่าไปเรื่อยๆ หรือจนกว่าคุณจะสั่งให้หยุดอย่างชัดเจน
 
-As an example, change the _src/main.rs_ file in your _loops_ directory to look
-like this:
+ตัวอย่างเช่น เปลี่ยนไฟล์ _src/main.rs_ ใน Directory _loops_ ของคุณให้มีลักษณะดังนี้:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -189,10 +138,7 @@ like this:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-loop/src/main.rs}}
 ```
 
-When we run this program, we’ll see `again!` printed over and over continuously
-until we stop the program manually. Most terminals support the keyboard shortcut
-<kbd>ctrl</kbd>-<kbd>c</kbd> to interrupt a program that is stuck in a continual
-loop. Give it a try:
+เมื่อเรารันโปรแกรมนี้ เราจะเห็นคำว่า `again!` พิมพ์ซ้ำแล้วซ้ำเล่าอย่างต่อเนื่องจนกว่าเราจะหยุดโปรแกรมด้วยตัวเอง Terminal ส่วนใหญ่รองรับ Keyboard Shortcut <kbd>ctrl</kbd>-<kbd>c</kbd> เพื่อ Interrupt โปรแกรมที่ติดอยู่ใน Loop ที่ไม่มีวันสิ้นสุด ลองทำดูครับ:
 
 <!-- manual-regeneration
 cd listings/ch03-common-programming-concepts/no-listing-32-loop
@@ -212,76 +158,44 @@ again!
 ^Cagain!
 ```
 
-The symbol `^C` represents where you pressed <kbd>ctrl</kbd>-<kbd>c</kbd>. You
-may or may not see the word `again!` printed after the `^C`, depending on where
-the code was in the loop when it received the interrupt signal.
+สัญลักษณ์ `^C` แสดงถึงตำแหน่งที่คุณกด <kbd>ctrl</kbd>-<kbd>c</kbd> คุณอาจเห็นหรือไม่เห็นคำว่า `again!` พิมพ์ออกมาหลังจาก `^C` ก็ได้ ขึ้นอยู่กับว่า Code อยู่ส่วนใดของ Loop เมื่อได้รับสัญญาณ Interrupt
 
-Fortunately, Rust also provides a way to break out of a loop using code. You
-can place the `break` keyword within the loop to tell the program when to stop
-executing the loop. Recall that we did this in the guessing game in the
-[“Quitting After a Correct Guess”][quitting-after-a-correct-guess]<!-- ignore
---> section of Chapter 2 to exit the program when the user won the game by
-guessing the correct number.
+โชคดีที่ Rust ยังมีวิธีออกจาก Loop โดยใช้ Code คุณสามารถใส่ Keyword `break` ภายใน Loop เพื่อบอกให้โปรแกรมหยุดการ Execute Loop เมื่อใดก็ได้ จำได้ไหมว่าเราทำเช่นนี้ในเกมทายตัวเลขในส่วน [“Quitting After a Correct Guess”][quitting-after-a-correct-guess]<!-- ignore
+--> ของ บทที่ 2 เพื่อออกจากโปรแกรมเมื่อผู้ใช้ชนะเกมโดยการทายตัวเลขที่ถูกต้อง
 
-We also used `continue` in the guessing game, which in a loop tells the program
-to skip over any remaining code in this iteration of the loop and go to the
-next iteration.
+เรายังใช้ `continue` ในเกมทายตัวเลขด้วย ซึ่งใน Loop จะบอกให้โปรแกรมข้าม Code ที่เหลืออยู่ในการวนรอบปัจจุบัน และไปเริ่มการวนรอบถัดไป
 
-#### Returning Values from Loops
+#### การ Return ค่าจาก Loops
 
-One of the uses of a `loop` is to retry an operation you know might fail, such
-as checking whether a thread has completed its job. You might also need to pass
-the result of that operation out of the loop to the rest of your code. To do
-this, you can add the value you want returned after the `break` expression you
-use to stop the loop; that value will be returned out of the loop so you can
-use it, as shown here:
+ประโยชน์อย่างหนึ่งของ `loop` คือการลองทำ Operation ที่คุณรู้ว่าอาจล้มเหลวซ้ำ เช่น การตรวจสอบว่า Thread ทำงานเสร็จสิ้นแล้วหรือไม่ คุณอาจจำเป็นต้องส่งผลลัพธ์ของ Operation นั้นออกจาก Loop ไปยังส่วนอื่นๆ ของ Code ของคุณ เพื่อทำสิ่งนี้ คุณสามารถเพิ่มค่าที่คุณต้องการ Return หลังจาก Expression `break` ที่คุณใช้เพื่อหยุด Loop ค่านั้นจะถูก Return ออกมาจาก Loop เพื่อให้คุณสามารถใช้งานได้ ดังที่แสดงไว้ในตัวอย่างนี้:
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-33-return-value-from-loop/src/main.rs}}
 ```
 
-Before the loop, we declare a variable named `counter` and initialize it to
-`0`. Then we declare a variable named `result` to hold the value returned from
-the loop. On every iteration of the loop, we add `1` to the `counter` variable,
-and then check whether the `counter` is equal to `10`. When it is, we use the
-`break` keyword with the value `counter * 2`. After the loop, we use a
-semicolon to end the statement that assigns the value to `result`. Finally, we
-print the value in `result`, which in this case is `20`.
 
-You can also `return` from inside a loop. While `break` only exits the current
-loop, `return` always exits the current function.
+ก่อน Loop เราประกาศตัวแปรชื่อ `counter` และ Initialize ให้มีค่าเป็น `0` จากนั้นเราประกาศตัวแปรชื่อ `result` เพื่อเก็บค่าที่ Return ออกมาจาก Loop ในทุกๆ รอบของการวน Loop เราจะเพิ่ม 1 ให้กับตัวแปร `counter` แล้วตรวจสอบว่า `counter` มีค่าเท่ากับ 10 หรือไม่ เมื่อเป็นเช่นนั้น เราจะใช้ Keyword break พร้อมกับค่า `counter * 2` หลังจาก Loop เราใช้เครื่องหมายเซมิโคลอนเพื่อจบ Statement ที่กำหนดค่าให้กับ `result` สุดท้าย เราพิมพ์ค่าใน result ซึ่งในกรณีนี้คือ `20`
 
-#### Loop Labels to Disambiguate Between Multiple Loops
+คุณยังสามารถ `return` จากภายใน Loop ได้ด้วย ในขณะที่ `break` จะออกจาก Loop ปัจจุบันเท่านั้น แต่ `return` จะออกจากฟังก์ชันปัจจุบันเสมอ
 
-If you have loops within loops, `break` and `continue` apply to the innermost
-loop at that point. You can optionally specify a _loop label_ on a loop that
-you can then use with `break` or `continue` to specify that those keywords
-apply to the labeled loop instead of the innermost loop. Loop labels must begin
-with a single quote. Here’s an example with two nested loops:
+#### Loop Labels เพื่อแยกความแตกต่างระหว่าง Loops หลายชั้น
+
+หากคุณมี Loops ซ้อนกัน Keyword `break` และ `continue` จะมีผลกับ Loop ที่อยู่ชั้นในสุด ณ จุดนั้น คุณสามารถเลือกที่จะระบุ _Loop Label_ บน Loop ได้ จากนั้นคุณสามารถใช้ Label นี้กับ `break` หรือ `continue` เพื่อระบุว่า Keyword เหล่านั้นมีผลกับ Loop ที่มี Label แทนที่จะเป็น Loop ที่อยู่ชั้นในสุด Loop Labels ต้องเริ่มต้นด้วยเครื่องหมาย Single Quote นี่คือตัวอย่างที่มี Loops ซ้อนกันสองชั้น:
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-5-loop-labels/src/main.rs}}
 ```
 
-The outer loop has the label `'counting_up`, and it will count up from 0 to 2.
-The inner loop without a label counts down from 10 to 9. The first `break` that
-doesn’t specify a label will exit the inner loop only. The `break
-'counting_up;` statement will exit the outer loop. This code prints:
+Loop นอกมี Label `'counting_up'` และจะนับขึ้นจาก 0 ถึง 2 Loop ในที่ไม่มี Label จะนับลงจาก 10 ถึง 9 คำสั่ง `break` แรกที่ไม่ได้ระบุ Label จะออกจาก Loop ในสุดเท่านั้น ส่วนคำสั่ง break 'counting_up; จะออกจาก Loop นอก โค้ดนี้จะพิมพ์:
 
 ```console
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-5-loop-labels/output.txt}}
 ```
 
-#### Conditional Loops with `while`
+#### Conditional Loops ด้วย `while`
 
-A program will often need to evaluate a condition within a loop. While the
-condition is `true`, the loop runs. When the condition ceases to be `true`, the
-program calls `break`, stopping the loop. It’s possible to implement behavior
-like this using a combination of `loop`, `if`, `else`, and `break`; you could
-try that now in a program, if you’d like. However, this pattern is so common
-that Rust has a built-in language construct for it, called a `while` loop. In
-Listing 3-3, we use `while` to loop the program three times, counting down each
-time, and then, after the loop, print a message and exit.
+
+บ่อยครั้งที่โปรแกรมจำเป็นต้องประเมินเงื่อนไขภายใน Loop ในขณะที่เงื่อนไขเป็น `true` Loop จะทำงาน เมื่อเงื่อนไขไม่เป็น `true` โปรแกรมจะเรียก `break` เพื่อหยุด Loop คุณสามารถ Implement ลักษณะการทำงานแบบนี้ได้โดยใช้การรวมกันของ `loop`, `if`, `else` และ `break` คุณสามารถลองทำดูในโปรแกรมตอนนี้ก็ได้ หากต้องการ อย่างไรก็ตาม Pattern นี้เป็นเรื่องปกติมาก จน Rust มี Construct ภาษา Built-in สำหรับมัน เรียกว่า `While` Loop ใน Listing 3-3 เราใช้ `while` เพื่อวน Loop โปรแกรมสามครั้ง โดยนับถอยหลังในแต่ละครั้ง และหลังจาก Loop แล้ว จะพิมพ์ข้อความและ Exit
 
 <Listing number="3-3" file-name="src/main.rs" caption="Using a `while` loop to run code while a condition evaluates to `true`">
 
@@ -291,15 +205,13 @@ time, and then, after the loop, print a message and exit.
 
 </Listing>
 
-This construct eliminates a lot of nesting that would be necessary if you used
-`loop`, `if`, `else`, and `break`, and it’s clearer. While a condition
-evaluates to `true`, the code runs; otherwise, it exits the loop.
+โครงสร้างนี้ช่วยลดการซ้อนกันของ Code ที่จำเป็นหากคุณใช้ `loop`, `if`, `else` และ `break` และยังมีความชัดเจนกว่า ในขณะที่เงื่อนไขประเมินค่าเป็น `true` Code จะทำงาน มิฉะนั้นจะออกจาก Loop
 
-#### Looping Through a Collection with `for`
 
-You can also use the `while` construct to loop over the elements of a
-collection, such as an array. For example, the loop in Listing 3-4 prints each
-element in the array `a`.
+
+#### การวน Loop ผ่าน Collection ด้วย `for`
+
+คุณยังสามารถใช้ Construct `while` เพื่อวน Loop ผ่าน Elements ของ Collection ได้ เช่น Array ตัวอย่างเช่น Loop ใน Listing 3-4 จะพิมพ์แต่ละ Element ใน Array `a`
 
 <Listing number="3-4" file-name="src/main.rs" caption="Looping through each element of a collection using a `while` loop">
 
@@ -309,28 +221,16 @@ element in the array `a`.
 
 </Listing>
 
-Here, the code counts up through the elements in the array. It starts at index
-`0`, and then loops until it reaches the final index in the array (that is,
-when `index < 5` is no longer `true`). Running this code will print every
-element in the array:
+ใน Code นี้จะมีการนับวนไปตาม Elements ใน Array โดยเริ่มต้นที่ Index `0` แล้ววน Loop ไปเรื่อยๆ จนกระทั่งถึง Index สุดท้ายใน Array (นั่นคือเมื่อ `index < 5` ไม่เป็น `true` อีกต่อไป) การรัน Code นี้จะพิมพ์ทุก Element ใน Array:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/listing-03-04/output.txt}}
 ```
+ค่าทั้งห้าของ Array ปรากฏใน Terminal ตามที่คาดไว้ แม้ว่า `index` จะมีค่าถึง `5` ในบางจุด แต่ Loop จะหยุดการทำงานก่อนที่จะพยายามดึงค่าที่หกจาก Array
 
-All five array values appear in the terminal, as expected. Even though `index`
-will reach a value of `5` at some point, the loop stops executing before trying
-to fetch a sixth value from the array.
+อย่างไรก็ตาม วิธีนี้มีโอกาสเกิด Error ได้ง่าย เราอาจทำให้โปรแกรม Panic ได้หากค่า Index หรือเงื่อนไขการทดสอบไม่ถูกต้อง ตัวอย่างเช่น หากคุณเปลี่ยน Definition ของ Array `a` ให้มีสี่ Elements แต่ลืมอัปเดตเงื่อนไขเป็น `while index < 4` โค้ดจะ Panic นอกจากนี้ยังช้าด้วย เนื่องจาก Compiler จะเพิ่ม Runtime Code เพื่อทำการตรวจสอบเงื่อนไขว่า Index อยู่ภายในขอบเขตของ Array หรือไม่ ในทุกๆ รอบของการวน Loop
 
-However, this approach is error prone; we could cause the program to panic if
-the index value or test condition is incorrect. For example, if you changed the
-definition of the `a` array to have four elements but forgot to update the
-condition to `while index < 4`, the code would panic. It’s also slow, because
-the compiler adds runtime code to perform the conditional check of whether the
-index is within the bounds of the array on every iteration through the loop.
-
-As a more concise alternative, you can use a `for` loop and execute some code
-for each item in a collection. A `for` loop looks like the code in Listing 3-5.
+เพื่อเป็นทางเลือกที่กระชับกว่า คุณสามารถใช้ `for` Loop และ Execute Code บางอย่างสำหรับแต่ละ Item ใน Collection `for` Loop มีลักษณะเหมือน Code ใน Listing 3-5:
 
 <Listing number="3-5" file-name="src/main.rs" caption="Looping through each element of a collection using a `for` loop">
 
@@ -340,25 +240,13 @@ for each item in a collection. A `for` loop looks like the code in Listing 3-5.
 
 </Listing>
 
-When we run this code, we’ll see the same output as in Listing 3-4. More
-importantly, we’ve now increased the safety of the code and eliminated the
-chance of bugs that might result from going beyond the end of the array or not
-going far enough and missing some items.
+เมื่อเรารันโค้ดนี้ เราจะเห็น Output เดียวกันกับใน Listing 3-4 ที่สำคัญกว่านั้นคือ ตอนนี้เราได้เพิ่มความปลอดภัยของโค้ดและขจัดโอกาสเกิด Bugs ที่อาจเกิดขึ้นจากการเข้าถึงเกินขอบเขตของ Array หรือเข้าถึงไม่เพียงพอและพลาดบาง Items ไป
 
-Using the `for` loop, you wouldn’t need to remember to change any other code if
-you changed the number of values in the array, as you would with the method
-used in Listing 3-4.
+การใช้ `for` Loop ทำให้คุณไม่จำเป็นต้องจำที่จะต้องแก้ไข Code ส่วนอื่น หากคุณเปลี่ยนจำนวนค่าใน Array เหมือนกับวิธีที่ใช้ใน Listing 3-4
 
-The safety and conciseness of `for` loops make them the most commonly used loop
-construct in Rust. Even in situations in which you want to run some code a
-certain number of times, as in the countdown example that used a `while` loop
-in Listing 3-3, most Rustaceans would use a `for` loop. The way to do that
-would be to use a `Range`, provided by the standard library, which generates
-all numbers in sequence starting from one number and ending before another
-number.
+ความปลอดภัยและความกระชับของ `for` Loops ทำให้มันเป็น Construct Loop ที่ใช้บ่อยที่สุดใน Rust แม้ในสถานการณ์ที่คุณต้องการรัน Code จำนวนครั้งที่แน่นอน เช่น ตัวอย่างการนับถอยหลังที่ใช้ `while` Loop ใน Listing 3-3 Rustaceans ส่วนใหญ่จะใช้ `for` Loop วิธีการทำเช่นนั้นคือการใช้ `Range` ที่ Standard Library จัดเตรียมไว้ให้ ซึ่งจะสร้างตัวเลขทั้งหมดตามลำดับ โดยเริ่มต้นจากตัวเลขหนึ่งและสิ้นสุดก่อนอีกตัวเลขหนึ่ง
 
-Here’s what the countdown would look like using a `for` loop and another method
-we’ve not yet talked about, `rev`, to reverse the range:
+นี่คือลักษณะของการนับถอยหลังโดยใช้ `for` Loop และอีก Method ที่เรายังไม่ได้พูดถึงคือ `rev` ซึ่งใช้เพื่อกลับลำดับของ Range:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -366,22 +254,17 @@ we’ve not yet talked about, `rev`, to reverse the range:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-34-for-range/src/main.rs}}
 ```
 
-This code is a bit nicer, isn’t it?
+โค้ดนี้ดูดีกว่าหน่อยใช่ไหมครับ?
 
-## Summary
+## สรุป
 
-You made it! This was a sizable chapter: you learned about variables, scalar
-and compound data types, functions, comments, `if` expressions, and loops! To
-practice with the concepts discussed in this chapter, try building programs to
-do the following:
+คุณทำสำเร็จแล้ว! นี่เป็นบทที่ค่อนข้างยาว: คุณได้เรียนรู้เกี่ยวกับตัวแปร, Data Types แบบ Scalar และ Compound, ฟังก์ชัน, Comments, `If` Expressions และ Loops! เพื่อฝึกฝนแนวคิดที่กล่าวถึงในบทนี้ ลองสร้างโปรแกรมเพื่อทำสิ่งต่อไปนี้:
 
-- Convert temperatures between Fahrenheit and Celsius.
-- Generate the *n*th Fibonacci number.
-- Print the lyrics to the Christmas carol “The Twelve Days of Christmas,”
-  taking advantage of the repetition in the song.
+- แปลงอุณหภูมิระหว่างฟาเรนไฮต์และเซลเซียส
+- สร้างเลข Fibonacci ลำดับที่ n
+- พิมพ์เนื้อเพลงของเพลงคริสต์มาส "The Twelve Days of Christmas" โดยใช้ประโยชน์จากการทำซ้ำในเพลง
 
-When you’re ready to move on, we’ll talk about a concept in Rust that _doesn’t_
-commonly exist in other programming languages: ownership.
+เมื่อคุณพร้อมที่จะก้าวไปข้างหน้า เราจะพูดถึงแนวคิดใน Rust ที่ ไม่มี อยู่ทั่วไปในภาษา Programming อื่นๆ นั่นคือ Ownership ครับ
 
 [comparing-the-guess-to-the-secret-number]: ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number
 [quitting-after-a-correct-guess]: ch02-00-guessing-game-tutorial.html#quitting-after-a-correct-guess
